@@ -1,50 +1,34 @@
-<div class="row">
-  {{! Burgers to eat}}
-  <div class="col s6 center-align">
-    <ul>
-      {{#each brgr}}
-        {{#unless this.devoured}}
-          <div class="card light-green">
-            <p>
-              {{this.id}}. {{this.burger_name}}
-
-              <form action="update/{{this.id}}?_method=PUT" method="POST">
-                <input type="hidden" name="devoured" value="1">
-                <button type="submit" class="waves-effect waves-light btn green z-depth-4">DEVOUR IT!</button>
-              </form>
-  
-            </p>
-          </div>
-        {{/unless}}
+<div class="card my-2">
+  <h5 class="card-header">Burgers that are waiting to be devoured!</h5>
+  <div class="card-body">
+    <ul class="list-group">
+      {{#each burgers}}
+      {{#unless devoured}}
+      {{> burgers/burger-block devoured=false}}
+      {{/unless}}
       {{/each}}
     </ul>
-  </div>
-
-  {{! Devoured Burgers}}
-  <div class="col s6 center-align">
-    <ul>
-      {{#each brgr}}
-        {{#if this.devoured}}
-          <div class="card light-green lighten-2">
-            <p class="grey-text">
-              {{this.id}}. {{this.burger_name}}
-
-              <form action="delete/{{this.id}}?_method=DELETE" method="POST">
-                <button type="submit" class="waves-effect waves-light btn green z-depth-4">Remove</button>
-              </form>
-            </p>
-          </div>
-        {{/if}}
-      {{/each}}
-    </ul>
+    <form class="create-form">
+      <div class="input-group my-1">
+        <input id="burger-name-input" type="text" class="form-control" placeholder="Burger Name" aria-label="Burger Name"
+          aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="add-burger-button">Add burger</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 
-<div class="row">
-  <div class="col s3"></div>
-  <div class="col s6">
-    <div class="card-panel center-align deep-purple lighten-3">
-      {{> menu/dropdown}}
-    </div>
+<div class="card my-2">
+  <h5 class="card-header">Ate them up yum!</h5>
+  <div class="card-body">
+    <ul class="list-group">
+      {{#each burgers}}
+      {{#if devoured}}
+      {{> burgers/burger-block devoured=true}}
+      {{/if}}
+      {{/each}}
+    </ul>
   </div>
 </div>
