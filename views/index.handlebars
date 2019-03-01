@@ -1,34 +1,40 @@
-<div class="card my-2">
-  <h5 class="card-header">Burgers that are waiting to be devoured!</h5>
-  <div class="card-body">
-    <ul class="list-group">
-      {{#each burgers}}
-      {{#unless devoured}}
-      {{> burgers/burger-block devoured=false}}
-      {{/unless}}
-      {{/each}}
-    </ul>
-    <form class="create-form">
-      <div class="input-group my-1">
-        <input id="burger-name-input" type="text" class="form-control" placeholder="Burger Name" aria-label="Burger Name"
-          aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="add-burger-button">Add burger</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+<div class="row">
+  <center>
+    <div class="col-md-4">
+      <h3 class="submitFont">Burgers Available</h3>
+      <div id="burgersAvailable">
 
-<div class="card my-2">
-  <h5 class="card-header">Ate them up yum!</h5>
-  <div class="card-body">
-    <ul class="list-group">
-      {{#each burgers}}
-      {{#if devoured}}
-      {{> burgers/burger-block devoured=true}}
-      {{/if}}
-      {{/each}}
-    </ul>
-  </div>
+        {{#each burgers}}
+        {{#unless devoured}}
+        <form action="burger/eat/{{id}}" method="POST">
+          <div class="input-group">
+            <li class="form-control">{{id}}. {{burger_name}}</li>
+            <span class="input-group-btn">
+              <button class="btn btn-danger devour-button" type="submit">Eat</button>
+            </span>
+          </div>
+        </form>
+        {{/unless}}
+        {{/each}}
+
+      </div>
+    </div>
+
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+      <h3 class="submitFont">Burgers Devoured</h3>
+      <div id="alreadyEaten">
+
+        {{#each burgers}}
+        {{#if this.devoured}}
+        <div class="input-group">
+          <li class="form-control">{{this.id}}. {{this.burger_name}}</li>
+        </div>
+        {{/if}}
+        {{/each}}
+
+      </div>
+    </div>
+  </center>
 </div>

@@ -1,14 +1,3 @@
-// var Sequelize = require('sequelize'), connection;
-// if (process.env.JAWSDB_URL) {
-//   connection = new Sequelize(process.env.JAWSDB_URL);
-// } else {
-//   connection = new Sequelize("burgers_db", "root", "root", {
-//     host: 'localhost',
-//     dialect: 'mysql',
-//     port: '3306'
-//   })
-// }
-
 var express = require("express");
 
 var PORT = process.env.PORT || 8080;
@@ -30,7 +19,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/burgers_controller");
+var mysql = require("mysql");
+var routes = require("./controllers/burgers_controller.js");
 
 app.use(routes);
 

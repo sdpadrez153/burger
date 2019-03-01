@@ -1,21 +1,52 @@
 <!DOCTYPE html>
-<html lang ="en">
+<html>
   <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-      <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
-    <title>Eat the Burger!</title>
-  </head>
-  <body>
-    <div class="container">
-      {{> nav/navbar}}
+    <title>Burger</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-      {{{ body }}}
+  </head>
+
+  <body>
+
+    <body background="https://cdn5.vectorstock.com/i/1000x1000/93/34/seamless-pattern-of-burgers-background-for-fast-vector-18919334.jpg"></body>
+
+    <div class="container-fluid">
+    <center>
+      <div class="row">
+    <div class="jumbotron">
+    <h1>Devour It!</h1>      
+    <p>Pick or Add a Burger. Then devour it. <br> </p>    
+
+    
+        
+    </center>
+    
+
+      <br>
+      
+      {{{body}}}
+
+
+      <br><br>
+
+      
+      <form action="burger/create" method="POST"> 
+        <div class="row">
+          <div class="col-md-3"></div> 
+            <div class="form-group col-md-6">
+            <center><label for="new_burger" class="submitFont"><h3>Add a Burger</h3></label></center>
+            <textarea class="form-control" type="text" columns="6" rows="2" id="new_burger required value="" name="burger_name"></textarea>
+          </div>
+         
+          <div class="col-md-3"></div> 
+        </div>
+      
+        <!-- Submit Button -->
+        <center>
+          <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
+        </center>
+      </form>
+      <br>
     </div>
   </body>
-<html>
+</html> 
